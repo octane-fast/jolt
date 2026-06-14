@@ -48,6 +48,17 @@ impl Program {
         self.func = Some(func.to_string())
     }
 
+    /// Pre-set the ELF path to skip the build step.
+    /// Use when the guest binary is pre-compiled and embedded.
+    pub fn set_elf(&mut self, elf: PathBuf) {
+        self.elf = Some(elf);
+    }
+
+    /// Pre-set the compute_advice ELF path to skip the build step.
+    pub fn set_elf_compute_advice(&mut self, elf: PathBuf) {
+        self.elf_compute_advice = Some(elf);
+    }
+
     /// Set the cargo profile used to compile the guest.
     ///
     /// If unset, guest builds default to `--release`.
